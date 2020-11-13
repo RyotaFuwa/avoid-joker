@@ -1,7 +1,7 @@
 import React from "react";
+import './App.scss';
 import {Switch, Route} from "react-router";
 import {Menu} from "./pages/menu/menu.page";
-import './App.css';
 import {Game} from "./pages/game/game.page";
 import {Settings} from "./pages/settings/settings.page";
 
