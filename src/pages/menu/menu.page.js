@@ -6,7 +6,7 @@ export const Menu = () => {
     const [numCards, setNumCards] = useState(16);
 
     const increment = () => {
-        if(numCards < 64) setNumCards(numCards + 1);
+        if(numCards < 16) setNumCards(numCards + 1);
     }
 
     const decrement = () => {
@@ -16,7 +16,7 @@ export const Menu = () => {
     const handleChange = e => {
         let {value} = e.target;
         if(value < 0) setNumCards(0);
-        else if(value >= 64) setNumCards(64);
+        else if(value >= 16) setNumCards(16);
         else setNumCards(value);
     }
 

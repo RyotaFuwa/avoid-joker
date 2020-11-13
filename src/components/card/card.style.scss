@@ -1,9 +1,74 @@
 .card {
   position: relative;
   perspective: 150rem;
-  height: 30rem;
-  background-color: white;
-  border-radius: 1rem;
-  border: 1px solid black;
-  box-shadow: 0 1rem 2rem rgba(black, 0.2);
+  width: 22%;
+  padding-top: 33%;
+  margin-bottom: 1.5vh;
+  border-radius: .5rem;
+  background-color: transparent;
+
+  &__side {
+    box-shadow: 0 .5rem 1rem rgba(black, 0.1);
+    transition: all .75s  cubic-bezier(1.000, -0.545, 0.600, 1.105);
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border: 1px solid black;
+    border-radius: .5rem;
+
+    &.front {
+      background-color: lightgray;
+    }
+
+    &.back {
+      background-color: white;
+
+      .top {
+        position: absolute;
+        padding-left: .25rem;
+        top: .1rem;
+        left: .1rem;
+      }
+
+      .bottom {
+        position: absolute;
+        bottom: .1rem;
+        right: .1rem;
+        padding-right: .25rem;
+        transform: rotateX(180deg);
+      }
+
+      .num-type {
+        font-size: 1.6rem;
+
+        .icon {
+          display: inline-block;
+          margin-top: .2rem;
+        }
+
+        //&.inv {
+        //  transform: rotateX(180deg);
+        //}
+
+        &.red {
+          color: crimson;
+        }
+
+        &.black {
+          color: black;
+        }
+
+      }
+
+      &.joker {
+        background-color: black;
+        background-image: url("../../data/jorker_light.svg");
+        background-size: cover;
+      }
+    }
+  }
 }
