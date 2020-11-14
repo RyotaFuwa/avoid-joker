@@ -1,9 +1,10 @@
-import React, {useState} from "react";
+import React from "react";
 import {Link} from "react-router-dom";
+import {connect} from "react-redux";
 import "./menu.style.scss";
+import {setNumCards} from "../../redux/redux/joker-game/joker-game.action";
 
-export const Menu = () => {
-    const [numCards, setNumCards] = useState(16);
+const Menu = ({numCards, setNumCards, cheatingSystem}) => {
 
     const increment = () => {
         if(numCards < 16) setNumCards(numCards + 1);
@@ -27,9 +28,11 @@ export const Menu = () => {
                     <div className='selected'>
                         Jorker
                     </div>
-                    <div className='other-games'>
-                        <li className='item'>joker</li>
-                    </div>
+
+                    {/*<div className='other-games'>*/}
+                    {/*    <li className='item'>joker</li>*/}
+                    {/*</div>*/}
+
                 </div>
                 <Link className='settings__link' to='/settings'>
                     <span className='settings__link--icon' />
@@ -53,3 +56,13 @@ export const Menu = () => {
         </div>
     )
 }
+
+const mapStateToProps = state => ({
+    numCards: state.jokerGame.numCards,
+})
+
+const mapDispatchToProps = dispatch => ({
+    setNumCards: numCards => dispatch(setNumCards(numCards)),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Menu);
