@@ -1,5 +1,6 @@
 .game {
   height: 100vh;
+  padding-top: 5vh;
 
   .game__stats {
     display: flex;
@@ -13,8 +14,8 @@
   .cards {
     margin: auto;
     padding: 7.5vh 2rem 1rem 2rem;
-    height: 85vh;
-    max-width: 85rem;
+    height: 80vh;
+    max-width: 75rem;
     //display: flex;
     //flex-flow: wrap;
     //justify-content: space-around;
@@ -22,6 +23,8 @@
     display: grid;
     grid-gap: 2rem;
     grid-template-columns: repeat(4, 1fr);
+    justify-content: center;
+    align-content: center;
   }
 
   .game__popup {
