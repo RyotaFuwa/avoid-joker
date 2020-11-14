@@ -1,0 +1,14 @@
+
+.back-to-menu {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  display: block;
+  font-weight: bold;
+  font-size: 2.5rem;
+
+  &:link {
+    text-decoration: none;
+    color: black;
+  }
+}

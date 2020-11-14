@@ -1,0 +1,23 @@
+.setting-list {
+  margin: 1rem;
+  padding: 1rem .5rem;
+  box-sizing: border-box;
+  border-radius: 2rem;
+  border: 1px solid lightgray;
+  height: 22.5rem;
+  display: grid;
+  grid-template-areas: "name" "description";
+  grid-template-rows: 1fr 5fr;
+
+  .name {
+    grid-area: name;
+  }
+
+  .description {
+    font-weight: normal;
+    grid-area: description;
+    justify-self: center;
+    align-self: center;
+    font-size: 1.6rem;
+  }
+}

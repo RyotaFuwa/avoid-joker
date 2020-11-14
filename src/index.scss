@@ -1,6 +1,13 @@
-
 html, body {
   font-size: 62.5%;
   font-family: Arial, sans-serif;
   user-select: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+* {
+  margin: 0;
+  padding: 0;
 }

@@ -8,9 +8,9 @@ import {Settings} from "./pages/settings/settings.page";
 function App() {
   return (
       <Switch>
-          <Route exact path='/' component={Menu} />
           <Route exact path='/game' component={Game} />
           <Route exact path='/settings' component={Settings} />
+          <Route exact path='/' component={Menu} />
       </Switch>
   );
 }

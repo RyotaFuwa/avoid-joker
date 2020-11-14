@@ -1,0 +1,54 @@
+.settings {
+  overflow: scroll;
+  position: relative;
+  left: -1px;
+  width: calc(100% + 2px);
+  max-width: 85rem;
+  height: 100vh;
+  margin: auto;
+  padding-top: 10vh;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  font-size: 2.5rem;
+
+  .admin-code {
+    padding-left: 25%;
+    text-align: left;
+    position: relative;
+
+    &--label {
+      font-size: 2.6rem;
+      position: absolute;
+      top: .5rem;
+      transition: all .5s;
+      display: none;
+      opacity: 0;
+    }
+
+    &--input {
+      text-align: center;
+      font-size: 2.6rem;
+      border-radius: .1rem;
+      outline: none;
+      border: 1px solid lightgray;
+      width: 50%;
+    }
+
+    &--input:focus ~ &--label {
+      top: -2rem;
+      display: inline-block;
+    }
+  }
+
+  .cheating-system {
+    margin-top: 10rem;
+    padding: 0 .5rem;
+    text-align: center;
+    font-size: 2.8rem;
+    font-weight: bold;
+
+    .title {
+      margin-bottom: 3rem;
+    }
+  }
+}

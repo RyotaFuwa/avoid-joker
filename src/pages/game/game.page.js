@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import "./game.style.scss";
 import {Card} from "../../components/card/card.component";
 import {Link} from "react-router-dom";
+import {BackToMenu} from "../../components/back-to-menu/back-to-menu.component";
 
 const CARD_NUMBER = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'];
 const CARD_TYPES = ['heart', 'diamond', 'club', 'spade'];
@@ -55,29 +56,26 @@ export const Game = () => {
         setPForNotSeen(PForNotSeen * (1 - PForNextJoker));
 
         if(card.isJoker) {
-            setTimeout(() => setOpen(true), 1000);
+            setTimeout(() => setOpen(true), 1500);
             setTimeout(flipAllCards, 2000);
         }
     }
 
     return (
-        <div className='game'>
-            <div className='game__stats' >
-                <div style={{'display': open ? "none" : null}}>
-                    P(Next is Joker) = {Math.round(PForNextJoker * 100)} %
-                </div>
-                <div style={{'display': open ? "none": null}}>
-                    P(Joker hasn't seen) = {Math.round(PForNotSeen * 100)} %
-                </div>
-            </div>
+        <div className='game' style={{'backgroundColor': open ? 'black': null}}>
+            <BackToMenu />
             <div className='cards'>
             {cards.map(card => (
                 <Card key={card.idx} {...card} onClick={() => flipCard(card.idx)} />
             ))}
             </div>
+
             <div className='game__popup' style={{'display': open ? null : "none"}}>
-                <div> You Lost. </div>
-                <Link className='back' to='/'>Back</Link>
+                <div className='game__popup--background' />
+                <div className='game__popup--box'>
+                    <div> Game Over </div>
+                    <Link className='back' to='/'>Back</Link>
+                </div>
             </div>
         </div>
     )

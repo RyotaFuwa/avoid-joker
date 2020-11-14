@@ -9,7 +9,7 @@
 
   &__side {
     box-shadow: 0 .5rem 1rem rgba(black, 0.1);
-    transition: all .75s  cubic-bezier(1.000, -0.545, 0.600, 1.105);
+    transition: transform .75s  cubic-bezier(1.000, -0.545, 0.600, 1.105);
     height: 100%;
     width: 100%;
     position: absolute;

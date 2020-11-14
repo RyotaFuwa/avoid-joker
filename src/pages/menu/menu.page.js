@@ -23,11 +23,16 @@ export const Menu = () => {
     return (
         <div className='menu'>
             <div className='top-bar'>
-                <span className='title'>
-                    Joker
-                </span>
-                <Link className='settings' to='/settings'>
-                    <span className='settings__icon' />
+                <div className='title'>
+                    <div className='selected'>
+                        Jorker
+                    </div>
+                    <div className='other-games'>
+                        <li className='item'>joker</li>
+                    </div>
+                </div>
+                <Link className='settings__link' to='/settings'>
+                    <span className='settings__link--icon' />
                 </Link>
             </div>
 
