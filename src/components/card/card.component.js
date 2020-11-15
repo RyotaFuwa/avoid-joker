@@ -74,9 +74,7 @@ export const Card = ({isJoker, flipped, onClick, num, type}) => {
             <div
                 className='card__side front'
                 style={{"transform": flipped ? "rotateY(180deg)" : null}}
-            >
-                {isJoker && <h1>I'm Joker</h1>}
-            </div>
+            />
             <div
                 className={`card__side back ${isJoker && "joker"}`}
                 style={{"transform": flipped ? "rotateY(0)" : "rotateY(-180deg)"}}
