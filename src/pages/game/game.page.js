@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import {connect} from "react-redux";
 import "./game.style.scss";
 import {Card} from "../../components/card/card.component";
@@ -26,11 +26,13 @@ class Game extends React.Component {
                     gameOver: false,
                     prevIdx: 0,
                 }));
+                break;
             default:
                 this.setState({
                     cards: Game.getCards(this.props.numCards),
                     gameOver: false,
                 })
+                break;
         }
     }
 

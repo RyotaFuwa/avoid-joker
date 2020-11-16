@@ -16,6 +16,7 @@ const Menu = ({numCards, setNumCards}) => {
 
     const handleChange = e => {
         let {value} = e.target;
+        value = Number(value);
         if (value < 0) setNumCards(0);
         else if (value >= 16) setNumCards(16);
         else setNumCards(value);
