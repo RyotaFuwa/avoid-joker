@@ -69,8 +69,16 @@ const getNumAndType = (num, type, inv=false) => {
 
 
 export const Card = ({isJoker, flipped, onClick, num, type}) => {
+
+    // const audioRef = React.createRef();
+    const handleClick = e => {
+        onClick(e);
+        // audioRef.current.play();
+    }
+
     return (
-        <div className='card' onClick={onClick}>
+        <div className='card' onClick={handleClick}>
+            {/*<audio ref={audioRef} src='../../data/card_flip.mp3'/>*/}
             <div
                 className='card__side front'
                 style={{"transform": flipped ? "rotateY(180deg)" : null}}

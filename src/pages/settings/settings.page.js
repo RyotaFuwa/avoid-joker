@@ -7,7 +7,7 @@ import {setCheatingSystem} from "../../redux/redux/joker-game/joker-game.action"
 
 const CHEATING_SYSTEMS = [
     ["default",  "No Cheating. Joker will be placed at random."],
-    ["joker won't be around", "It's guaranteed that Joker will not be next to the last card including diagonal neighbours."]
+    ["joker won't be around", "It's guaranteed that Joker will not be around the card slipped last time. (i.e. joker won't be neighbors including diagonals to the last card."]
 ]
 
 const Settings = ({cheatingSystem, setCheatingSystem}) => {

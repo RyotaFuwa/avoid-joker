@@ -21,19 +21,19 @@ class Game extends React.Component {
         switch(this.props.cheatingSystem) {
             case "joker won't be around":
                 this.setState(state => ({
-                    cards: this.getCards(this.props.numCards),
+                    cards: Game.getCards(this.props.numCards),
                     gameOver: false,
                     prevIdx: 0,
                 }));
             default:
                 this.setState({
-                    cards: this.getCards(this.props.numCards),
+                    cards: Game.getCards(this.props.numCards),
                     gameOver: false,
                 })
         }
     }
 
-    getCards = numCards => {
+    static getCards = numCards => {
         const seen = CARD_NUMBER.map(() => [false, false, false, false]);
         const cards = [];
         const jokerIdx = Math.floor(Math.random() * numCards);
@@ -143,7 +143,7 @@ class Game extends React.Component {
                 <div className='game__popup' style={{'display': this.state.gameOver ? null : "none"}}>
                     <div className='game__popup--background'/>
                     <div className='game__popup--box'>
-                        <div> Game Over</div>
+                        <div className='game-over'>Game Over</div>
                         <Link className='back' to='/'>Back</Link>
                     </div>
                 </div>

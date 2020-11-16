@@ -3,21 +3,21 @@ import {Link} from "react-router-dom";
 import {connect} from "react-redux";
 import "./menu.style.scss";
 import {setNumCards} from "../../redux/redux/joker-game/joker-game.action";
+import CardDisplay from "../../components/card-display/card-display.component";
 
-const Menu = ({numCards, setNumCards, cheatingSystem}) => {
-
+const Menu = ({numCards, setNumCards}) => {
     const increment = () => {
-        if(numCards < 16) setNumCards(numCards + 1);
+        if (numCards < 16) setNumCards(numCards + 1);
     }
 
     const decrement = () => {
-        if(numCards > 1) setNumCards(numCards - 1)
+        if (numCards > 1) setNumCards(numCards - 1)
     }
 
     const handleChange = e => {
         let {value} = e.target;
-        if(value < 0) setNumCards(0);
-        else if(value >= 16) setNumCards(16);
+        if (value < 0) setNumCards(0);
+        else if (value >= 16) setNumCards(16);
         else setNumCards(value);
     }
 
@@ -35,8 +35,12 @@ const Menu = ({numCards, setNumCards, cheatingSystem}) => {
 
                 </div>
                 <Link className='settings__link' to='/settings'>
-                    <span className='settings__link--icon' />
+                    <span className='settings__link--icon'/>
                 </Link>
+            </div>
+
+            <div className='display-card'>
+                <CardDisplay />
             </div>
 
             <h1 className='start-game'>
@@ -44,12 +48,15 @@ const Menu = ({numCards, setNumCards, cheatingSystem}) => {
                 <div className='num-cards'>
                     Number of Cards
                     <span className='operator decrement' onClick={decrement}>
-                        -
-                    </span>
-                    <input className='value' onChange={handleChange} value={numCards}/>
+                -
+            </span>
+                    <input
+                        className='value'
+                        onChange={handleChange}
+                        value={numCards}/>
                     <span className='operator increment' onClick={increment}>
-                        +
-                    </span>
+                +
+            </span>
                 </div>
             </h1>
 

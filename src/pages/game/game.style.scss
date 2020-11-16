@@ -1,6 +1,7 @@
 .game {
   height: 100vh;
   padding-top: 5vh;
+  transition: background-color 1s;
 
   .game__stats {
     display: flex;
@@ -46,6 +47,7 @@
       left: 50%;
       transform: translate(-50%, -50%);
       width: 75%;
+      max-width: 50rem;
       height: 25%;
       border: 1px solid black;
       border-radius: 3rem;
@@ -54,13 +56,22 @@
       text-align: center;
       font-size: 3rem;
       box-sizing: border-box;
-      padding-top: 10%;
+
+      .game-over {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
 
       .back {
+        position: absolute;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
         font-size: 2rem;
         color: darkblue;
         display: inline-block;
-        margin-top: 7.5rem;
 
         &:link {
           text-decoration: none;
