@@ -13,6 +13,7 @@ class Game extends React.Component {
         super(props);
         this.state = {
             cards: [],
+            lock: false,
             gameOver: false,
         };
     }
@@ -65,19 +66,18 @@ class Game extends React.Component {
             state.cards[idx].flipped = true;
             return {cards: [...state.cards]};
         }, () => {
-            if (this.state.cards[idx].isJoker) setTimeout(this.endGame, 2000);
+            if (this.state.cards[idx].isJoker) this.endGame();
         });
     }
 
     jokerWontBeAround(idx) {
-        console.log(idx);
         const {prevIdx, cards} = this.state;
         if(!cards[idx].isJoker) {
             this.setState(state => {
                 state.cards[idx].flipped = true;
                 return {cards: [...state.cards], prevIdx: idx};
             }, () => {
-                if (this.state.cards[idx].isJoker) setTimeout(this.endGame, 2000);
+                if (this.state.cards[idx].isJoker) this.endGame();
             });
             return;
         }
@@ -106,7 +106,7 @@ class Game extends React.Component {
             state.cards[idx].flipped = true;
             return {cards: [...state.cards], prevIdx: idx};
         }, () => {
-            if (this.state.cards[idx].isJoker) setTimeout(this.endGame, 2000);
+            if (this.state.cards[idx].isJoker) this.endGame();
         });
     }
 
@@ -124,15 +124,23 @@ class Game extends React.Component {
     }
 
     endGame = () => {
-        this.setState(state => {
-            state.cards.forEach(card => card.flipped = true);
-            return {gameOver: true, cards: [...state.cards]};
-        });
+        // lock the screen, flip all cards, and then game over. There is a delay for each step.
+        const flipAll = callback => {
+            this.setState(state => {
+                state.cards.forEach(card => card.flipped = true);
+                return {cards: [...state.cards]}},
+                () => setTimeout(callback, 2000));
+        }
+
+        this.setState(({lock: true}),
+            () => setTimeout(() => flipAll(() => this.setState({gameOver: true})),
+                1500));
+
     }
 
     render() {
         return (
-            <div className='game' style={{'backgroundColor': this.state.gameOver ? 'black' : null}}>
+            <div className='game' style={{'backgroundColor': this.state.lock ? 'black' : null}}>
                 <BackToMenu />
                 <div className='cards'>
                     {this.state.cards.map(card => (
@@ -140,7 +148,19 @@ class Game extends React.Component {
                     ))}
                 </div>
 
-                <div className='game__popup' style={{'display': this.state.gameOver ? null : "none"}}>
+                <div
+                    className='game__lock'
+                    style={{
+                        'display': this.state.lock ? null : "none",
+                    }}
+                />
+                <div
+                    className='game__popup'
+                    style={{
+                        'opacity': this.state.gameOver ? "100%" : "0%",
+                        'zIndex': this.state.gameOver ? "2" : null,
+                    }}
+                >
                     <div className='game__popup--background'/>
                     <div className='game__popup--box'>
                         <div className='game-over'>Game Over</div>

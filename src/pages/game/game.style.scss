@@ -1,7 +1,7 @@
 .game {
   height: 100vh;
   padding-top: 5vh;
-  transition: background-color 1s;
+  transition: background-color 4s cubic-bezier(1.000, 0.000, 0.295, 1.000);
 
   .game__stats {
     display: flex;
@@ -28,17 +28,27 @@
     align-content: center;
   }
 
+  .game__lock {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+  }
+
   .game__popup {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
+    z-index: -1;
+    transition: opacity .5s;
 
     &--background {
       width: 100%;
       height: 100%;
-      backdrop-filter: blur(.25rem);
+      backdrop-filter: blur(.15rem);
     }
 
     &--box {
